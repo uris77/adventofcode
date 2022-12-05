@@ -112,7 +112,6 @@ func Move(stacks stack, src, dest, toMove int) stack {
 }
 
 func oneMove(stacks stack, from, to int) {
-	// pop from, push to
 	var box rune
 	box, stacks[from] = stacks[from][len(stacks[from])-1], stacks[from][:len(stacks[from])-1]
 	stacks[to] = append(stacks[to], box)

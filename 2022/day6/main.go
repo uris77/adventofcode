@@ -17,31 +17,26 @@ func main() {
 }
 
 func one(window [][]rune) {
-	cnt := 0
-	var marker []rune
-	for i := range window {
-		d := hasDiffs(window[i])
-		if d == true && cnt == 0 {
-			cnt = i
-			marker = window[i]
-		}
-	}
-	log.Printf("\ncnt: %d ; marker: %c ; start: %d", cnt, marker, cnt+4)
+	cnt := findStartOfSequence(window)
+	log.Printf("\nOne: cnt: %d ;  start: %d", cnt, cnt+4)
 }
 
 func two(window [][]rune) {
-	//log.Printf("window: %c", window)
+	cnt := findStartOfSequence(window)
+	log.Printf("\nTwo: cnt: %d;  start: %d", cnt, cnt+14)
+}
+
+func findStartOfSequence(window [][]rune) int {
 	cnt := 0
-	var som []rune
 	for i := range window {
 		d := hasDiffs(window[i])
 		if d == true && cnt == 0 {
 			cnt = i
-			som = window[i]
 		}
 	}
 
-	log.Printf("\ncnt: %d; som: %c; start: %d", cnt, som, cnt+14)
+	return cnt
+
 }
 
 func hasDiffs(in []rune) bool {
